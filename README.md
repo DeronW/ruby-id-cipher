@@ -1,6 +1,6 @@
 # IdCipher
 
-TODO: Write a gem description
+cipher Integer to another Integer, make people confused with the real number.
 
 ## Installation
 
@@ -18,7 +18,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+set a key: use it like Settings.id_cipher_key='something.like.this'
+
+IdCipher.encrypt(1) # puts 42491238512
+IdCipher.decrypt(42491238512) # puts 1
+
+the result about encrypt is depend on key
 
 ## Contributing
 
