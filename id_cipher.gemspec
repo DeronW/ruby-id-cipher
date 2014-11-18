@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = IdCipher::VERSION
   spec.authors       = ["delong"]
   spec.email         = ["w.del@qq.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{cipher integer to another integer}
+  spec.description   = %q{only used to cipher integer, use in confused with ID}
+  spec.homepage      = "https://github.com/delongw/ruby-id-cipher"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
