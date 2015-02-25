@@ -43,6 +43,10 @@ notice: the key length must be over 16, should not longer than 256.
 IdCipher has two method, most of time, result of two method will be same.
 but **DO NOT** use them obscurely.
 
+ID cipher use C ``pack`` function, so it has up limmit for id,
+``pack`` function use 'L' type pack id, it's a unsigned long type, 
+value range is 0~(2**32 - 1), means it must less than 4294967295
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/id_cipher/fork )
