@@ -1,6 +1,6 @@
 # IdCipher
 
-cipher Integer to another Integer, make people confused with the real number.
+cipher Integer to another Integer, make customer confused with the real number
 
 ## Installation
 
@@ -18,12 +18,30 @@ Or install it yourself as:
 
 ## Usage
 
-set a key: use it like Settings.id_cipher_key='something.like.this'
+set cipher slat in two ways:
 
-IdCipher.encrypt(1) # puts 42491238512
-IdCipher.decrypt(42491238512) # puts 1
+1. if use this in ruby on rails, add config in ``settings.yml``:
 
-the result about encrypt is depend on key
+        Settings.id_cipher_key = 'something.like.this'
+        
+2. or set IdCipher::KEY direct
+
+        module IdCipher
+            KEY = 'something.like.this'
+        end
+        
+notice: the key length must be over 16, should not longer than 256.
+
+#### code example
+
+> IdCipher.encrypt(1) # puts 42491238512
+
+>IdCipher.decrypt(42491238512) # puts 1
+
+**the result about encrypt is depend on key**
+
+IdCipher has two method, most of time, result of two method will be same.
+but **DO NOT** use them obscurely.
 
 ## Contributing
 

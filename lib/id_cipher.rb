@@ -1,5 +1,9 @@
 require 'openssl'
-require "id_cipher/version"
+
+
+module IdCipher
+  VERSION = "0.1.0"
+end
 
 
 module IdCipher
@@ -25,29 +29,34 @@ module IdCipher
 
     def initialize
       @cipher = OpenSSL::Cipher::Cipher.new('rc4')
-      @key = Setting.id_cipher_key
+    end
+
+    def key
+      (defined? Setting) && Setting.id_cipher_key ||
+          IdCipher::KEY ||
+          (raise TypeError, 'no cipher key found. you can set key within Settings.yml, id_cipher_key="cipher slat" or refine IdCipher::KEY')
     end
 
     def pack(number)
-      raise TypeError, "#{number} is not a Fixnum" if number.class != Fixnum
       [number].pack('L')
     end
 
     def unpack(crypto_text)
-      raise TypeError, "#{crypto_text} is not a String" if crypto_text.class != String
       crypto_text.unpack('L')[0]
     end
 
     def encrypt(id)
+      id = id.to_i
       @cipher.encrypt
-      @cipher.key = @key
+      @cipher.key = key
       self.unpack @cipher.update(self.pack(id))
     end
 
-    def decrypt(id)
+    def decrypt(eid)
+      eid = eid.to_i
       @cipher.decrypt
-      @cipher.key = @key
-      self.unpack @cipher.update(self.pack(id))
+      @cipher.key = key
+      self.unpack @cipher.update(self.pack(eid))
     end
 
   end

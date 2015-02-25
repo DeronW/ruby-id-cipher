@@ -11,6 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{cipher integer to another integer}
   spec.description   = %q{only used to cipher integer, use in confused with ID}
   spec.homepage      = "https://github.com/delongw/ruby-id-cipher"
+  spec.required_ruby_version = '>= 2.0'
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
